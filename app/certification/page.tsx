@@ -1,6 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PageHero } from "../components/PageHero";
+import { CableBackground } from "../components/CableBackground";
+import { ScrollReveal } from "../components/anim/ScrollReveal";
+import { SplitLineReveal } from "../components/anim/SplitLineReveal";
+import { TextHoverReveal } from "../components/anim/TextHoverReveal";
 
 export const metadata: Metadata = {
   title: "Certification — LFC Wires & Cables",
@@ -215,24 +219,42 @@ export default function CertificationPage() {
       </section>
 
       {/* ----------------- CTA ----------------- */}
-      <section className="relative px-6 py-32 bg-[var(--background-elevated)]">
+      <section className="relative px-6 py-32 overflow-hidden isolate">
+        <div className="absolute inset-0 -z-10">
+          <CableBackground intensity="rich" />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(900px 360px at 50% 50%, transparent, var(--background) 75%)",
+            }}
+          />
+        </div>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-display text-5xl sm:text-7xl">
-            Need our certificates?
+            <SplitLineReveal mode="words" stagger={70}>
+              Need our certificates?
+            </SplitLineReveal>
           </h2>
-          <p className="mt-6 text-lg text-[var(--foreground-muted)] max-w-xl mx-auto">
-            Test reports, declarations of conformity and material data sheets —
-            ask, and we'll send the latest versions.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--brand)] hover:text-white transition-colors rounded-full px-7 py-3.5 text-sm font-medium"
-            >
-              Request documents
-              <span aria-hidden>→</span>
-            </Link>
-          </div>
+          <ScrollReveal from="up" delay={150}>
+            <p className="mt-6 text-lg text-[var(--foreground-muted)] max-w-xl mx-auto">
+              Test reports, declarations of conformity and material data sheets
+              — ask, and we&apos;ll send the latest versions.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal from="up" delay={250}>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--brand)] hover:text-white transition-colors rounded-full px-7 py-3.5 text-sm font-medium"
+              >
+                <TextHoverReveal hoverColor="var(--background)">
+                  Request documents
+                </TextHoverReveal>
+                <span aria-hidden>→</span>
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

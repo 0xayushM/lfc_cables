@@ -12,7 +12,7 @@ const PARTNERS: Logo[] = [
 export function TrustedBy() {
   return (
     <section className="relative py-12 px-6 border-y border-[var(--border)]">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8">
+      <div className="max-w-7xl mx-auto flex flex-col items-center gap-8">
         <p className="text-eyebrow whitespace-nowrap shrink-0">
           Trusted by industry leaders
         </p>

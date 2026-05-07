@@ -2,6 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PageHero } from "../components/PageHero";
+import { CableBackground } from "../components/CableBackground";
+import { ScrollReveal } from "../components/anim/ScrollReveal";
+import { SplitLineReveal } from "../components/anim/SplitLineReveal";
+import { TextHoverReveal } from "../components/anim/TextHoverReveal";
 
 export const metadata: Metadata = {
   title: "Products — LFC Wires & Cables",
@@ -13,7 +17,7 @@ const FEATURED = {
   title: "Battery cables",
   spec: "Up to 1,000 A · -40°C to +125°C",
   body: "High-current battery cabling for hybrid and electric mobility — flexible PVC sleeving, copper conductors and a tin-plated lug terminated to your spec.",
-  image: "/images/products/battery-cable.png",
+  image: "/images/products_bg/battery_cable.png",
 };
 
 const CATEGORIES = [
@@ -23,8 +27,7 @@ const CATEGORIES = [
     spec: "BIS / VDE / UL approved",
     description:
       "Branded power cords for global appliance manufacturers. NEMA, IEC and custom moulded plug options.",
-    image: "/images/products/power-cord.png",
-    bg: "from-orange-500/15",
+    image: "/images/products_bg/power_cord.png",
   },
   {
     id: "wire-harnesses",
@@ -32,8 +35,7 @@ const CATEGORIES = [
     spec: "Custom assemblies",
     description:
       "Engineered to-print or design-for-manufacture. Multiple gauge support, colour coding, and full electrical testing.",
-    image: "/images/products/wire-harness.png",
-    bg: "from-amber-500/15",
+    image: "/images/products_bg/wire_harness.png",
   },
   {
     id: "ribbon-cables",
@@ -41,8 +43,7 @@ const CATEGORIES = [
     spec: "1.27 mm pitch / RJ-terminated",
     description:
       "Multi-conductor ribbon cables for board-to-board, board-to-panel and IDC applications.",
-    image: "/images/products/ribbon-cable.png",
-    bg: "from-rose-500/15",
+    image: "/images/products_bg/ribbon_cable.png",
   },
   {
     id: "terminals",
@@ -50,8 +51,7 @@ const CATEGORIES = [
     spec: "Brass / tin-plated",
     description:
       "Male, female, ring and spade terminals — molex-compatible housings and OEM-specific designs.",
-    image: "/images/products/terminal-and-coupler.png",
-    bg: "from-yellow-500/15",
+    image: "/images/products_bg/terminal_and_couplor.png",
   },
   {
     id: "battery-couplers",
@@ -59,8 +59,7 @@ const CATEGORIES = [
     spec: "12V / 24V / 48V",
     description:
       "Heavy-duty jumper cables and battery clamps — copper jaws, insulated grips, made for the road.",
-    image: "/images/products/battery-coupler.png",
-    bg: "from-red-500/15",
+    image: "/images/products_bg/battery_cable.png",
   },
   {
     id: "shielded",
@@ -68,8 +67,7 @@ const CATEGORIES = [
     spec: "EMI / RFI protection",
     description:
       "Braided shielding over multi-core cables for high-noise environments — automotive, industrial and white-goods.",
-    image: "/images/products/shielded-cable.png",
-    bg: "from-zinc-500/15",
+    image: "/images/products_bg/wire_cable.png",
   },
   {
     id: "usb",
@@ -77,8 +75,7 @@ const CATEGORIES = [
     spec: "USB 2.0 / 3.0 / Type-C",
     description:
       "High-speed data and charging cables with braided sleeving and reinforced strain reliefs.",
-    image: "/images/products/usb-cable.png",
-    bg: "from-blue-500/15",
+    image: "/images/products_bg/usb_cable.png",
   },
   {
     id: "thermal",
@@ -86,8 +83,7 @@ const CATEGORIES = [
     spec: "Aluminium / Copper",
     description:
       "Extruded aluminium heatsinks for power electronics, lighting and industrial enclosures.",
-    image: "/images/products/heatsink.png",
-    bg: "from-slate-500/15",
+    image: "/images/products_bg/heat_sink.png",
   },
 ];
 
@@ -149,13 +145,13 @@ export default function ProductsPage() {
                   ))}
                 </div>
               </div>
-              <div className="relative aspect-square">
+              <div className="relative aspect-square rounded-2xl overflow-hidden border border-[var(--border)]">
                 <Image
                   src={FEATURED.image}
                   alt={FEATURED.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-contain"
+                  className="object-cover"
                   priority
                 />
               </div>
@@ -194,16 +190,15 @@ export default function ProductsPage() {
                 id={c.id}
                 className="group hover-lift relative rounded-3xl overflow-hidden bg-[var(--surface)] border border-[var(--border)] flex flex-col"
               >
-                <div
-                  className={`relative aspect-square bg-gradient-to-br ${c.bg} to-transparent overflow-hidden`}
-                >
+                <div className="relative aspect-square overflow-hidden">
                   <Image
                     src={c.image}
                     alt={c.title}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1280px) 33vw, 25vw"
-                    className="object-contain p-6 group-hover:scale-110 transition-transform duration-700"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </div>
                 <div className="p-6 border-t border-[var(--border)]">
                   <p className="text-[10px] font-mono text-[var(--brand)] mb-2 uppercase tracking-wider">
@@ -269,24 +264,43 @@ export default function ProductsPage() {
       </section>
 
       {/* ----------------- CTA ----------------- */}
-      <section className="relative px-6 py-32">
+      <section className="relative px-6 py-32 overflow-hidden isolate">
+        <div className="absolute inset-0 -z-10">
+          <CableBackground intensity="rich" />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(900px 360px at 50% 50%, transparent, var(--background) 75%)",
+            }}
+          />
+        </div>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-display text-5xl sm:text-7xl">
-            Don't see what you need?
+            <SplitLineReveal mode="words" stagger={70}>
+              Don&apos;t see what you need?
+            </SplitLineReveal>
           </h2>
-          <p className="mt-6 text-lg text-[var(--foreground-muted)] max-w-xl mx-auto">
-            We build custom — sample, prototype or full production runs. Send
-            your spec sheet and we'll respond with a quote within 24 hours.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--brand)] hover:text-white transition-colors rounded-full px-7 py-3.5 text-sm font-medium"
-            >
-              Request a custom quote
-              <span aria-hidden>→</span>
-            </Link>
-          </div>
+          <ScrollReveal from="up" delay={150}>
+            <p className="mt-6 text-lg text-[var(--foreground-muted)] max-w-xl mx-auto">
+              We build custom — sample, prototype or full production runs. Send
+              your spec sheet and we&apos;ll respond with a quote within 24
+              hours.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal from="up" delay={250}>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--brand)] hover:text-white transition-colors rounded-full px-7 py-3.5 text-sm font-medium"
+              >
+                <TextHoverReveal hoverColor="var(--background)">
+                  Request a custom quote
+                </TextHoverReveal>
+                <span aria-hidden>→</span>
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

@@ -36,9 +36,6 @@ function useGrid(): { cols: number; rows: number } {
   return grid;
 }
 
-const ENTER_DELAY = 120;
-const EXIT_DURATION = 1000;
-
 function LogoCell({
   logos,
   offset,
@@ -54,23 +51,12 @@ function LogoCell({
   const current = (offset + tick) % n;
   const previous = (offset + tick - 1 + n) % n;
 
-  const [showPrev, setShowPrev] = useState(false);
-  useEffect(() => {
-    if (tick === 0) return;
-    setShowPrev(true);
-    const t = setTimeout(
-      () => setShowPrev(false),
-      stagger + EXIT_DURATION + 120,
-    );
-    return () => clearTimeout(t);
-  }, [tick, stagger]);
-
   const Curr = logos[current];
   const Prev = logos[previous];
 
   return (
-    <div className="relative h-16 md:h-20 lg:h-24 w-full overflow-hidden">
-      {showPrev && (
+    <div className="relative h-12 md:h-16 lg:h-20 w-full overflow-hidden">
+      {tick > 0 && (
         <div
           key={`p-${tick}`}
           className="absolute inset-0 flex items-center justify-center animate-logo-out"
@@ -81,7 +67,7 @@ function LogoCell({
               src={Prev.src}
               alt={Prev.name}
               fill
-              sizes="240px"
+              sizes="200px"
               className="object-contain object-center brightness-100"
             />
           </div>
@@ -90,14 +76,14 @@ function LogoCell({
       <div
         key={`c-${tick}`}
         className="absolute inset-0 flex items-center justify-center animate-logo-in"
-        style={{ animationDelay: `${stagger + ENTER_DELAY}ms` }}
+        style={{ animationDelay: `${stagger}ms` }}
       >
         <div className="relative h-full w-full">
           <Image
             src={Curr.src}
             alt={Curr.name}
             fill
-            sizes="240px"
+            sizes="200px"
             className="object-contain object-center brightness-100"
           />
         </div>
@@ -108,7 +94,7 @@ function LogoCell({
 
 export function LogoCarousel({
   logos,
-  cycleInterval = 3000,
+  cycleInterval = 12000,
   className,
 }: Props) {
   const { cols, rows } = useGrid();
@@ -131,7 +117,7 @@ export function LogoCarousel({
 
   return (
     <div
-      className={`grid w-full gap-x-8 gap-y-6 md:gap-x-12 md:gap-y-8 ${className ?? ""}`}
+      className={`grid w-full gap-x-8 gap-y-6 md:gap-x-24 md:gap-y-16 ${className ?? ""}`}
       style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
     >
       {Array.from({ length: totalCells }).map((_, i) => (

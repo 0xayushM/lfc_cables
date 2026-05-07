@@ -2,6 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PageHero } from "../components/PageHero";
+import { CableBackground } from "../components/CableBackground";
+import { ScrollReveal } from "../components/anim/ScrollReveal";
+import { SplitLineReveal } from "../components/anim/SplitLineReveal";
+import { TextHoverReveal } from "../components/anim/TextHoverReveal";
 
 export const metadata: Metadata = {
   title: "Manufacturing — LFC Wires & Cables",
@@ -14,57 +18,49 @@ const STEPS = [
     n: "01",
     title: "Design and prototyping",
     body: "Conceptualising new cable types, materials and configurations that deliver enhanced performance, durability and efficiency.",
-    image:
-      "/images/products/heat-sink.png",
+    image: "/images/products_bg/ribbon_cable.png",
   },
   {
     n: "02",
     title: "Wire drawing & annealing",
     body: "Synthetic diamond dies pull copper or aluminium rods to precise gauges, ensuring exceptional consistency in wire production.",
-    image:
-      "/images/products/heat-sink.png",
+    image: "/images/products_bg/wire_cable.png",
   },
   {
     n: "03",
     title: "Twisting & bunching",
     body: "Wires of the same gauge are twisted or stranded together — enhancing flexibility, strength and overall performance.",
-    image:
-      "/images/products/heat-sink.png",
+    image: "/images/products_bg/wire_harness.png",
   },
   {
     n: "04",
     title: "Extrusion & cabling",
     body: "Our extrusion lines apply insulating compound to the wire — adding the durability, dielectric strength and safety properties our customers depend on.",
-    image:
-      "/images/products/heat-sink.png",
+    image: "/images/products_bg/power_cord.png",
   },
   {
     n: "05",
     title: "Cutting & stripping",
     body: "Before assembly, raw materials are prepared with the insulation partially or totally removed at specific points.",
-    image:
-      "/images/products/heat-sink.png",
+    image: "/images/products_bg/usb_cable.png",
   },
   {
     n: "06",
     title: "Crimping & assembly",
     body: "Crucial for ensuring that every electrical connection is secure and reliable — using calibrated tooling and proven techniques.",
-    image:
-      "/images/products/heat-sink.png",
+    image: "/images/products_bg/terminal_and_couplor.png",
   },
   {
     n: "07",
     title: "Plastic injection moulding",
     body: "In-house injection moulding produces housings, connectors and structural parts essential for finished cable assemblies.",
-    image:
-      "/images/products/heat-sink.png",
+    image: "/images/products_bg/heat_sink.png",
   },
   {
     n: "08",
     title: "Testing & quality control",
     body: "Both are paramount in the wire and cable industry. Every reel is tested for safety, reliability and electrical performance before it ships.",
-    image:
-      "/images/products/heat-sink.png",
+    image: "/images/products_bg/battery_cable.png",
   },
 ];
 
@@ -150,31 +146,49 @@ export default function ManufacturingPage() {
       </section>
 
       {/* ----------------- CTA ----------------- */}
-      <section className="relative px-6 py-32 bg-[var(--background-elevated)]">
+      <section className="relative px-6 py-32 overflow-hidden isolate">
+        <div className="absolute inset-0 -z-10">
+          <CableBackground intensity="rich" />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(900px 360px at 50% 50%, transparent, var(--background) 75%)",
+            }}
+          />
+        </div>
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-eyebrow mb-6">Visit the floor</p>
           <h2 className="text-display text-5xl sm:text-7xl">
-            See it in <span className="text-[var(--brand)]">person.</span>
+            <SplitLineReveal mode="words" stagger={80}>
+              See it in person.
+            </SplitLineReveal>
           </h2>
-          <p className="mt-6 text-lg text-[var(--foreground-muted)] max-w-xl mx-auto">
-            Schedule a tour of our Narela, Delhi facility — we'll walk you
-            through every machine, every test bench, every shipping dock.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--brand)] hover:text-white transition-colors rounded-full px-7 py-3.5 text-sm font-medium"
-            >
-              Schedule a visit
-              <span aria-hidden>→</span>
-            </Link>
-            <Link
-              href="/certification"
-              className="inline-flex items-center gap-2 text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-colors rounded-full px-6 py-3.5 text-sm font-medium"
-            >
-              See certifications
-            </Link>
-          </div>
+          <ScrollReveal from="up" delay={150}>
+            <p className="mt-6 text-lg text-[var(--foreground-muted)] max-w-xl mx-auto">
+              Schedule a tour of our Narela, Delhi facility — we&apos;ll walk
+              you through every machine, every test bench, every shipping dock.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal from="up" delay={250}>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--brand)] hover:text-white transition-colors rounded-full px-7 py-3.5 text-sm font-medium"
+              >
+                <TextHoverReveal hoverColor="var(--background)">
+                  Schedule a visit
+                </TextHoverReveal>
+                <span aria-hidden>→</span>
+              </Link>
+              <Link
+                href="/certification"
+                className="inline-flex items-center gap-2 text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-colors rounded-full px-6 py-3.5 text-sm font-medium"
+              >
+                <TextHoverReveal>See certifications</TextHoverReveal>
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

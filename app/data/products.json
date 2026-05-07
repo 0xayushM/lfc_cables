@@ -1,0 +1,114 @@
+[
+  {
+    "id": "power-cord",
+    "name": "Power cords",
+    "category": "Power & connection",
+    "tagline": "Mains-rated. Globally certified.",
+    "description": "Moulded power cords engineered for appliances, tooling and industrial equipment. Multi-region plug variants available.",
+    "video": "/videos/power_cord.mp4",
+    "image": "/images/products_bg/power_cord.png",
+    "specs": [
+      { "icon": "◐", "label": "Compliance", "value": "BIS / VDE / UL approved" },
+      { "icon": "✦", "label": "Conductor", "value": "Bare or tinned copper, 0.5–6 mm²" },
+      { "icon": "◇", "label": "Temperature range", "value": "-25°C to +105°C continuous" }
+    ]
+  },
+  {
+    "id": "wire-harness",
+    "name": "Wire harnesses",
+    "category": "Custom assembly",
+    "tagline": "Engineered to your drawing.",
+    "description": "Multi-conductor harnesses with full crimp, insertion and 100% electrical testing. Built per your bill of materials, tested to your spec.",
+    "video": "/videos/wire_harness.mp4",
+    "image": "/images/products_bg/wire_harness.png",
+    "specs": [
+      { "icon": "◐", "label": "Conductor count", "value": "Up to 64 cores per harness" },
+      { "icon": "✦", "label": "Termination", "value": "Crimp, IDC, solder & ultrasonic weld" },
+      { "icon": "◇", "label": "Testing", "value": "100% continuity & hi-pot, IS 9968" }
+    ]
+  },
+  {
+    "id": "battery-cable",
+    "name": "Battery cables",
+    "category": "High-current",
+    "tagline": "From 12V starter to 800V EV pack.",
+    "description": "High-current battery interconnects with crimped lugs, heat-shrink boots and EMI sleeving. Tin-plated for corrosion resistance.",
+    "video": "/videos/battery_cable.mp4",
+    "image": "/images/products_bg/battery_cable.png",
+    "specs": [
+      { "icon": "◐", "label": "Current rating", "value": "Up to 350 A continuous" },
+      { "icon": "✦", "label": "Conductor", "value": "Stranded tinned copper, 16–95 mm²" },
+      { "icon": "◇", "label": "Operating voltage", "value": "12 V to 1000 V DC" }
+    ]
+  },
+  {
+    "id": "ribbon-cable",
+    "name": "Flat ribbon cables",
+    "category": "Signal & data",
+    "tagline": "Precise pitch, predictable impedance.",
+    "description": "1.27 mm and 2.54 mm pitch ribbon cables with mass-termination IDC compatibility. Coloured stripe for pin-1 identification.",
+    "video": "/videos/ribbon_cable.mp4",
+    "image": "/images/products_bg/ribbon_cable.png",
+    "specs": [
+      { "icon": "◐", "label": "Conductor pitch", "value": "1.27 mm / 2.54 mm" },
+      { "icon": "✦", "label": "Way count", "value": "4 to 64 ways" },
+      { "icon": "◇", "label": "Impedance", "value": "105 Ω ± 10% (typ.)" }
+    ]
+  },
+  {
+    "id": "terminal-and-coupler",
+    "name": "Connectors & terminals",
+    "category": "Interconnect",
+    "tagline": "Brass machined. Tin plated.",
+    "description": "Crimp, ring, spade and bullet terminals plus housings, in brass and tin-plated copper. Built for reliability across automotive and appliance use.",
+    "video": "/videos/terminal_and_coupler.mp4",
+    "image": "/images/products_bg/terminal_and_couplor.png",
+    "specs": [
+      { "icon": "◐", "label": "Material", "value": "Brass / tin-plated copper" },
+      { "icon": "✦", "label": "Wire range", "value": "AWG 22 to AWG 4" },
+      { "icon": "◇", "label": "Plating thickness", "value": "3–8 µm tin / 0.2 µm gold" }
+    ]
+  },
+  {
+    "id": "heat-sink",
+    "name": "Aluminium heat sinks",
+    "category": "Thermal",
+    "tagline": "Extruded. Anodised. CNC-finished.",
+    "description": "Custom-extruded aluminium heat sinks with optional CNC machining and anodising. For LED, power supply and EV inverter cooling.",
+    "video": "/videos/heat_sink.mp4",
+    "image": "/images/products_bg/heat_sink.png",
+    "specs": [
+      { "icon": "◐", "label": "Alloy", "value": "Al 6063-T5 / 6061-T6" },
+      { "icon": "✦", "label": "Thermal resistance", "value": "0.4–4.0 °C/W (typ.)" },
+      { "icon": "◇", "label": "Finish", "value": "Anodised black / clear, 8–25 µm" }
+    ]
+  },
+  {
+    "id": "shielded-cable",
+    "name": "Shielded wire cables",
+    "category": "EMI / RFI protected",
+    "tagline": "Quiet signal, even in noisy environments.",
+    "description": "Multi-core shielded cables with tinned-copper braid and aluminium foil for EMI/RFI suppression. Ideal for instrumentation, control and audio routing.",
+    "video": "/videos/wire_cable.mp4",
+    "image": "/images/products_bg/wire_cable.png",
+    "specs": [
+      { "icon": "◐", "label": "Shield", "value": "Tinned copper braid + Al/Mylar foil" },
+      { "icon": "✦", "label": "Conductor", "value": "Stranded copper, 0.22–2.5 mm²" },
+      { "icon": "◇", "label": "Coverage", "value": "≥ 85% braid coverage" }
+    ]
+  },
+  {
+    "id": "usb-cable",
+    "name": "USB cables",
+    "category": "Data & charging",
+    "tagline": "Type-A, Type-C, micro & lightning.",
+    "description": "Custom-length USB assemblies with moulded strain reliefs and tinned-braid shielding. Built for fast-charge and high-speed data on consumer and industrial devices.",
+    "video": "/videos/usb_cable.mp4",
+    "image": "/images/products_bg/usb_cable.png",
+    "specs": [
+      { "icon": "◐", "label": "Standards", "value": "USB 2.0 / 3.2 Gen 1 / Type-C PD" },
+      { "icon": "✦", "label": "Current rating", "value": "Up to 5 A @ 20 V (PD 3.0)" },
+      { "icon": "◇", "label": "Length", "value": "0.3 m to 3 m, custom on request" }
+    ]
+  }
+]

@@ -2,6 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PageHero } from "../components/PageHero";
+import { CableBackground } from "../components/CableBackground";
+import { ScrollReveal } from "../components/anim/ScrollReveal";
+import { SplitLineReveal } from "../components/anim/SplitLineReveal";
+import { TextHoverReveal } from "../components/anim/TextHoverReveal";
 
 export const metadata: Metadata = {
   title: "About — LFC Wires & Cables",
@@ -131,7 +135,7 @@ export default function AboutPage() {
           <aside className="lg:col-span-5">
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-[var(--border)]">
               <Image
-                src="/images/products/heat-sink.png"
+                src="/images/products_bg/wire_cable.png"
                 alt="Manufacturing floor"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
@@ -310,31 +314,46 @@ export default function AboutPage() {
       </section>
 
       {/* ----------------- CTA ----------------- */}
-      <section className="relative px-6 py-32">
+      <section className="relative px-6 py-32 overflow-hidden isolate">
+        <div className="absolute inset-0 -z-10">
+          <CableBackground intensity="rich" />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(900px 360px at 50% 50%, transparent, var(--background) 75%)",
+            }}
+          />
+        </div>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-display text-5xl sm:text-7xl">
-            Ready to{" "}
-            <span className="text-[var(--brand)]">work together?</span>
+            <SplitLineReveal mode="words" stagger={70}>
+              Ready to work together?
+            </SplitLineReveal>
           </h2>
-          <p className="mt-6 text-lg text-[var(--foreground-muted)] max-w-xl mx-auto">
-            Whether you need a single batch or a long-term manufacturing
-            partner — we'd love to hear what you're building.
-          </p>
+          <ScrollReveal from="up" delay={150}>
+            <p className="mt-6 text-lg text-[var(--foreground-muted)] max-w-xl mx-auto">
+              Whether you need a single batch or a long-term manufacturing
+              partner — we&apos;d love to hear what you&apos;re building.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal from="up" delay={250}>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--brand)] hover:text-white transition-colors rounded-full px-7 py-3.5 text-sm font-medium"
             >
-              Get a quote
+              <TextHoverReveal hoverColor="var(--background)">Get a quote</TextHoverReveal>
               <span aria-hidden>→</span>
             </Link>
             <Link
               href="/manufacturing"
               className="inline-flex items-center gap-2 text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-colors rounded-full px-6 py-3.5 text-sm font-medium"
             >
-              See our process
+              <TextHoverReveal>See our process</TextHoverReveal>
             </Link>
           </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

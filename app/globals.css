@@ -14,10 +14,10 @@
   --foreground-subtle: #6b6b6b;
 
   /* Brand orange (LFC) */
-  --brand: #ff6b1a;
-  --brand-soft: #ff8c4a;
-  --brand-deep: #d94d00;
-  --brand-glow: rgba(255, 107, 26, 0.18);
+  --brand: #EA3136;
+  --brand-soft: #f8585d;
+  --brand-deep: #d90007;
+  --brand-glow: rgba(234, 49, 54, 0.18);
 
   /* Borders */
   --border: rgba(255, 255, 255, 0.08);
@@ -216,6 +216,168 @@ body {
 }
 .animate-logo-out {
   animation: logo-out 0.3s cubic-bezier(0.55, 0, 0.55, 0.2) both;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ----- Text reveal primitives ----- */
+
+.split-reveal {
+  display: inline;
+}
+.split-reveal__row {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  line-height: inherit;
+}
+.split-reveal__inner {
+  display: inline-block;
+  transform: translateY(110%);
+  will-change: transform;
+}
+
+/* TextHoverReveal — two stacked layers, the bottom one slides up on hover */
+.text-hover-reveal {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1.1;
+}
+.text-hover-reveal__row {
+  display: inline-block;
+  white-space: pre;
+}
+.text-hover-reveal__row--bottom {
+  position: absolute;
+  inset: 0;
+  color: var(--hover-color, var(--brand));
+}
+.text-hover-reveal__letter {
+  display: inline-block;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+.text-hover-reveal__row--top .text-hover-reveal__letter {
+  transform: translateY(0);
+}
+.text-hover-reveal__row--bottom .text-hover-reveal__letter {
+  transform: translateY(110%);
+}
+.text-hover-reveal:hover .text-hover-reveal__row--top .text-hover-reveal__letter,
+a:hover > .text-hover-reveal .text-hover-reveal__row--top .text-hover-reveal__letter,
+button:hover > .text-hover-reveal .text-hover-reveal__row--top .text-hover-reveal__letter {
+  transform: translateY(-110%);
+}
+.text-hover-reveal:hover .text-hover-reveal__row--bottom .text-hover-reveal__letter,
+a:hover > .text-hover-reveal .text-hover-reveal__row--bottom .text-hover-reveal__letter,
+button:hover > .text-hover-reveal .text-hover-reveal__row--bottom .text-hover-reveal__letter {
+  transform: translateY(0);
+}
+
+/* ----- Page transition curtain ----- */
+.page-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  display: grid;
+  grid-template-rows: 1fr;
+  background: transparent;
+}
+.page-curtain__panel {
+  background: var(--background);
+  transform: translateY(100%);
+  will-change: transform;
+}
+.page-curtain.is-entering .page-curtain__panel {
+  transform: translateY(0);
+  transition: transform 0.55s cubic-bezier(0.7, 0, 0.3, 1);
+}
+.page-curtain.is-leaving .page-curtain__panel {
+  transform: translateY(-100%);
+  transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+/* ----- Initial loader ----- */
+@keyframes bird-fly-in {
+  0% {
+    transform: translate3d(-65vw, 22vh, 0) rotate(-12deg) scale(0.4);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  60% {
+    transform: translate3d(8vw, -4vh, 0) rotate(4deg) scale(0.85);
+  }
+  85% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+}
+@keyframes bird-wing-flap {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.78) translateY(-3%);
+  }
+}
+@keyframes loader-mark-fade {
+  0%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes loader-logo-in {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(8px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes loader-curtain-down {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* ----- Cable bg animation ----- */
+@keyframes cable-flow {
+  to {
+    stroke-dashoffset: -2400;
+  }
+}
+@keyframes cable-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.85;
+  }
 }
 
 /* Scrollbar */
