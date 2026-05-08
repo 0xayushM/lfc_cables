@@ -186,7 +186,7 @@ export function Hero() {
 
         {/* ── Hero text overlay (fades as grid forms) ────────────────── */}
         <div
-          className="absolute inset-0 z-10 flex flex-col justify-center pointer-events-none"
+          className="absolute shimmer inset-0 z-10 flex flex-col justify-center pointer-events-none"
           style={{
             opacity: textOpacity,
             transform: `translateY(${textY}px)`,
